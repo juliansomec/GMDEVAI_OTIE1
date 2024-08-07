@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AgentManager : MonoBehaviour
 {
     GameObject[] agents;
+    public Transform player;
+
     void Start()
     {
         agents = GameObject.FindGameObjectsWithTag("AI");
@@ -13,17 +16,9 @@ public class AgentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        foreach (GameObject ai in agents)
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000))
-            {
-                foreach (GameObject ai in agents)
-                {
-                    ai.GetComponent<AIControl>().agent.SetDestination(hit.point);
-                }
-            }
+            ai.GetComponent<AIControl>().agent.SetDestination(player.position);
         }
     }
 }
