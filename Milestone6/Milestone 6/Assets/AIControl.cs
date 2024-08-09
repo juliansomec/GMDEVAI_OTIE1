@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.FilePathAttribute;
 
 public class AIControl : MonoBehaviour
 {
